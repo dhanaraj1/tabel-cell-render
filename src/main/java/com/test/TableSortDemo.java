@@ -47,45 +47,9 @@ public class TableSortDemo extends JPanel {
 		table.setAutoCreateRowSorter(false);
 		final TableRowSorter tableRowSorter = new TableRowSorter(myTableModel);
 		table.setRowSorter(tableRowSorter);
+		CustomCellRendrer cellRendrer=new CustomCellRendrer();
 
-		table.getColumn("First Name").setCellRenderer(new  DefaultTableCellRenderer() {
-
-			private static final long serialVersionUID = 1L;
-
-			@Override
-			public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int col) {
-				final Component component = super.getTableCellRendererComponent(table, value, isSelected, hasFocus,
-
-						row, col);
-				final Field declaredFields = TableData.class.getDeclaredFields()[col];
-				try {
-
-					if ("i am update".equals(value)	) {
-						System.out.println("text ----->"+declaredFields.get(oldData.get(row))+" value  "+value+"  col "+col+" row "+row);
-						component.setBackground(Color.BLUE);
-						component.setForeground(Color.WHITE);
-
-						final CellThread timerTask =new CellThread(table, row, col,component);
-
-						final Timer tim = new Timer();
-						tim.schedule(timerTask,1000);
-
-
-					}else {
-						component.setBackground(null);
-						component.setForeground(null);
-					}
-
-
-				} catch (final IllegalArgumentException | IllegalAccessException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-
-
-				return component;
-			}
-		});
+		table.getColumn("First Name").setCellRenderer(cellRendrer);
 
 
 		//Create the scroll pane and add the table to it.
@@ -103,7 +67,7 @@ public class TableSortDemo extends JPanel {
 		//
 		//			});
 		//}).start();
-		listOfData.get(0).setAa("i am update");
+		listOfData.get(0).setAa(25);
 		myTableModel.fireTableDataChanged();
 		listOfData.stream().forEach(cl->{
 			if (cl!=null) {oldData.add((TableData) cl.clone());}
@@ -121,9 +85,9 @@ public class TableSortDemo extends JPanel {
 	private void fillListdata(List<TableData> listOfData) {
 		for(int i=0;i<10;i++) {
 			final TableData data = new TableData();
-			data.setAa("AA "+i);
-			data.setBb("BB "+i);
-			data.setCc("CC " +i);
+			data.setAa(i);
+			data.setBb(i);
+			data.setCc(i);
 			data.setDd(i);
 			data.setEe(i);
 			listOfData.add(data);
@@ -153,20 +117,20 @@ public class TableSortDemo extends JPanel {
 		this.setOpaque(true); //content panes must be opaque
 		frame.setContentPane(this);
 
-		frame.setMaximumSize(new Dimension(500, 500));
+		frame.setMaximumSize(new Dimension(700, 700));
 
 		//Display the window.
 		frame.pack();
 		frame.setVisible(true);
 		try {
-			Thread.sleep(200);
+			Thread.sleep(3000);
 		} catch (final InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		listOfData.get(0).setAa("i am not update");
+		listOfData.get(0).setAa(3);
 
-
+myTableModel.fireTableDataChanged();
 	}
 
 	public static void main(String[] args) {

@@ -1,12 +1,12 @@
 package com.test;
 
 public class TableData implements Cloneable {
-	String aa;
-	String bb;
-	String cc;
+	float aa;
+	float bb;
+	float cc;
 	Integer dd;
 	Integer ee;
-	public TableData(String aa2, String bb2, String cc2, Integer dd2, Integer ee2) {
+	public TableData(float aa2, float bb2, float cc2, Integer dd2, Integer ee2) {
 	}
 	public TableData() {
 		// TODO Auto-generated constructor stub
@@ -19,40 +19,23 @@ public class TableData implements Cloneable {
 			return new TableData(this.aa, this.bb,this.cc,this.dd,this.ee);
 		}
 	}
-	/**
-	 * @return the aa
-	 */
-	public String getAa() {
+	
+	public float getAa() {
 		return aa;
 	}
-	/**
-	 * @param aa the aa to set
-	 */
-	public void setAa(String aa) {
+	public void setAa(float aa) {
 		this.aa = aa;
 	}
-	/**
-	 * @return the bb
-	 */
-	public String getBb() {
+	public float getBb() {
 		return bb;
 	}
-	/**
-	 * @param bb the bb to set
-	 */
-	public void setBb(String bb) {
+	public void setBb(float bb) {
 		this.bb = bb;
 	}
-	/**
-	 * @return the cc
-	 */
-	public String getCc() {
+	public float getCc() {
 		return cc;
 	}
-	/**
-	 * @param cc the cc to set
-	 */
-	public void setCc(String cc) {
+	public void setCc(float cc) {
 		this.cc = cc;
 	}
 	/**
