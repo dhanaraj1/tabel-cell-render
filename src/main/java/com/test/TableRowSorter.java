@@ -2,13 +2,13 @@ package com.test;
 
 import java.util.Comparator;
 
-public class TableRowSorter extends javax.swing.table.TableRowSorter<CustomTableModel>  {
+public class TableRowSorter extends 	javax.swing.table.TableRowSorter<CustomTableModel>  {
 
 
 	public TableRowSorter(CustomTableModel myTableModel) {
 		super(myTableModel);
 		for (int i=0;i<myTableModel.getColumnCount();i++) {
-			setComparator(i, new Comparator<Float>() {
+			super.setComparator(i, new Comparator<Float>() {
 
 				Float nameB;
 				@Override

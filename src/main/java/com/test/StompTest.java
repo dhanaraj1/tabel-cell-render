@@ -11,10 +11,10 @@ import ua.naiksoftware.stomp.client.StompClient;
 public class StompTest {
 
 	public static void main(String[] args) {
-		final StompClient mStompClient = Stomp.over(Stomp.ConnectionProvider.OKHTTP, "ws://localhost:3030/liteapi/mlive-channel");
+		final StompClient mStompClient = Stomp.over(Stomp.ConnectionProvider.OKHTTP, "ws://lite.bcommo.in:3030/liteapi/mlive-channel");
 		mStompClient.connect();
 
-		mStompClient.send("/app/topic/watch/5b94bf25afba640ed8070005",ApplicationUtils.generateJSONFromObject(new ClientRequest())).subscribe();
+		mStompClient.send("/app/topic/watch/5b8a2e7df3391b75cb9441dd",ApplicationUtils.generateJSONFromObject(new ClientRequest())).subscribe();
 		try {
 			Thread.sleep(1000);
 		} catch (final InterruptedException e) {
@@ -23,7 +23,7 @@ public class StompTest {
 		}
 		//mStompClient.send("/app/topic/login", "zBnir85bs66xMTdZxzTKaXOwgf9+1HpIuc+AMCEVz40KW9/7k7+a4/vA60VEXQEaRh+p2S/FlYbgcwD2D+0kQQ==").subscribe();
 
-		mStompClient.topic("/topic/watch/5b94bf25afba640ed8070005").subscribe(topicMessage -> {
+		mStompClient.topic("/topic/watch/5b8a2e7df3391b75cb9441dd").subscribe(topicMessage -> {
 			System.out.println("recived \n"+ topicMessage.getPayload());
 		});
 
@@ -39,7 +39,7 @@ public class StompTest {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		mStompClient.send("/app/topic/watch/5b94bf25afba640ed8070005",ApplicationUtils.generateJSONFromObject(clientRequest)).subscribe();
+		mStompClient.send("/app/topic/watch/5b8a2e7df3391b75cb9441dd",ApplicationUtils.generateJSONFromObject(clientRequest)).subscribe();
 		try {
 			Thread.sleep(2000);
 		} catch (final InterruptedException e) {
@@ -52,7 +52,7 @@ public class StompTest {
 		clientRequest2.setIsFirstTime(Boolean.FALSE);
 		clientRequest2.setWantToStop(false);
 		clientRequest2.setWantToStart(true);
-		mStompClient.send("/app/topic/watch/5b94bf25afba640ed8070005",ApplicationUtils.generateJSONFromObject(clientRequest2)).subscribe();
+		mStompClient.send("/app/topic/watch/5b8a2e7df3391b75cb9441dd",ApplicationUtils.generateJSONFromObject(clientRequest2)).subscribe();
 		mStompClient.lifecycle().subscribe(lifecycleEvent -> {
 			switch (lifecycleEvent.getType()) {
 

@@ -47,9 +47,9 @@ public class TableSortDemo extends JPanel {
 		table.setAutoCreateRowSorter(false);
 		final TableRowSorter tableRowSorter = new TableRowSorter(myTableModel);
 		table.setRowSorter(tableRowSorter);
-		CustomCellRendrer cellRendrer=new CustomCellRendrer();
+		//CustomCellRendrer cellRendrer=new CustomCellRendrer();
 
-		table.getColumn("First Name").setCellRenderer(cellRendrer);
+		//table.getColumn("First Name").setCellRenderer(cellRendrer);
 
 
 		//Create the scroll pane and add the table to it.
@@ -67,7 +67,7 @@ public class TableSortDemo extends JPanel {
 		//
 		//			});
 		//}).start();
-		listOfData.get(0).setAa(25);
+		listOfData.get(0).setAa(25f);
 		myTableModel.fireTableDataChanged();
 		listOfData.stream().forEach(cl->{
 			if (cl!=null) {oldData.add((TableData) cl.clone());}
@@ -85,9 +85,9 @@ public class TableSortDemo extends JPanel {
 	private void fillListdata(List<TableData> listOfData) {
 		for(int i=0;i<10;i++) {
 			final TableData data = new TableData();
-			data.setAa(i);
-			data.setBb(i);
-			data.setCc(i);
+			data.setAa(Float.valueOf(i));
+			data.setBb(Float.valueOf(i));
+			data.setCc(Float.valueOf(i));
 			data.setDd(i);
 			data.setEe(i);
 			listOfData.add(data);
@@ -95,7 +95,7 @@ public class TableSortDemo extends JPanel {
 				listOfData.add( new TableData());
 			}
 		}
-
+		listOfData.get(5).setAa(null);
 
 		//listOfData.add( new TableData());
 	}
@@ -128,7 +128,7 @@ public class TableSortDemo extends JPanel {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		listOfData.get(0).setAa(3);
+		//listOfData.get(0).setAa(3f);
 
 myTableModel.fireTableDataChanged();
 	}
