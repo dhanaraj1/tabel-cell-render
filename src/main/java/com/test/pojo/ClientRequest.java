@@ -4,21 +4,24 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.test.util.ApplicationConstants;
+import com.test.util.ApplicationConstants.ALPHABET_CONSTANT;
 
-public class ClientRequest  {
+public class ClientRequest implements ALPHABET_CONSTANT  {
 
+	/**
+	 *
+	 */
+	private static final long serialVersionUID = 1L;
 	@JsonProperty(ApplicationConstants.ALPHABET_CONSTANT.A)
 	private List<String> scripts;
-	@JsonProperty(ApplicationConstants.ALPHABET_CONSTANT.B)
-	private Boolean isFirstTime;
-	@JsonProperty(ApplicationConstants.ALPHABET_CONSTANT.C)
+	@JsonProperty(ApplicationConstants.ALPHABET_CONSTANT.G)
 	private Object data;
 	@JsonProperty(ApplicationConstants.ALPHABET_CONSTANT.H)
 	private Boolean wantToStop;
-	@JsonProperty(ApplicationConstants.ALPHABET_CONSTANT.I)
-	private Boolean wantToStart;
 	@JsonProperty(ApplicationConstants.ALPHABET_CONSTANT.J)
 	private Boolean isMobile;
+	@JsonProperty(ApplicationConstants.ALPHABET_CONSTANT.K)
+	private Boolean wantToRemoveScripts;
 
 
 	public List<String> getScripts() {
@@ -29,13 +32,6 @@ public class ClientRequest  {
 		this.scripts = scripts;
 	}
 
-	public Boolean getIsFirstTime() {
-		return isFirstTime;
-	}
-
-	public void setIsFirstTime(Boolean isFirstTime) {
-		this.isFirstTime = isFirstTime;
-	}
 
 	public Boolean getWantToStop() {
 		return wantToStop;
@@ -55,14 +51,7 @@ public class ClientRequest  {
 		this.data = data;
 	}
 
-	public Boolean getWantToStart() {
-		return wantToStart;
-	}
-
-	public void setWantToStart(Boolean wantToStart) {
-		this.wantToStart = wantToStart;
-	}
-
+	
 	public Boolean getIsMobile() {
 		return isMobile;
 	}
@@ -71,6 +60,16 @@ public class ClientRequest  {
 		this.isMobile = isMobile;
 	}
 
+	
+	public Boolean getWantToRemoveScripts() {
+	
+		return wantToRemoveScripts;
+	}
 
+	
+	public void setWantToRemoveScripts(Boolean wantToRemoveScripts) {
+	
+		this.wantToRemoveScripts = wantToRemoveScripts;
+	}
 
 }

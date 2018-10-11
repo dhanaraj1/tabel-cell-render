@@ -12,31 +12,40 @@ public class StompTest {
 
 	public static void main(String[] args) {
 		//lite.bcommo.in
-		final StompClient mStompClient = Stomp.over(Stomp.ConnectionProvider.OKHTTP, "ws://localhost:3030/liteapi/mlive-channel");
+		final StompClient mStompClient = Stomp.over(Stomp.ConnectionProvider.OKHTTP, "ws://lite.bcommo.in:9090/liteapi/mlive-channel");
 		mStompClient.connect();
-		final ClientRequest onopenClientRequest =new ClientRequest();
-		onopenClientRequest.setIsMobile(Boolean.TRUE);
-		onopenClientRequest.setScripts(Arrays.asList("NSE-ADANIENT-27/09/2018","NSE-AJANTPHARM-27/09/2018"));
-		mStompClient.send("/app/topic/watch/5b8a2e7df3391b75cb9441dd",ApplicationUtils.generateJSONFromObject(onopenClientRequest)).subscribe();
-		//mStompClient.send("/app/topic/login", "zBnir85bs66xMTdZxzTKaXOwgf9+1HpIuc+AMCEVz40KW9/7k7+a4/vA60VEXQEaRh+p2S/FlYbgcwD2D+0kQQ==").subscribe();
-
-		mStompClient.topic("/topic/watch/5b8a2e7df3391b75cb9441dd").subscribe(topicMessage -> {
+		
+		/*mStompClient.topic("/user/topic/login").subscribe(topicMessage -> {
 			System.out.println("recived \n"+ topicMessage.getPayload());
 		});
+		//JwMgzrkg1wAv6By38dmVnS1498yOtbCINmfiBEGbZSKObnmFrxj7n5RdJ6CFSV+3DsOztNwc3wKE3yDy+wDpZg==
+		//qLPt/S96jVRJIbCbB/yh/7jDDlOO+Egro0Z6oCNoBf8=
+		mStompClient.send("/app/topic/login","qLPt/S96jVRJIbCbB/yh/7jDDlOO+Egro0Z6oCNoBf8=").subscribe();
+		*/
+		final ClientRequest onopenClientRequest =new ClientRequest();
+		onopenClientRequest.setIsMobile(Boolean.TRUE);
+		onopenClientRequest.setScripts(Arrays.asList("MCX-GOLD-05/12/2018","MCX-COPPER-28/02/2019"));
+		mStompClient.topic("/topic/watch/5bbaee3cbdd9161790b96776").subscribe(topicMessage -> {
+			System.out.println("recived \n"+ topicMessage.getPayload());
+		});
+		
+		//mStompClient.send("/app/topic/watch/5b8a2e7df3391b75cb9441dd",ApplicationUtils.generateJSONFromObject(onopenClientRequest)).subscribe();
+
+		//5b94bf25afba640ed8070005
+		//5b8a2e7df3391b75cb9441dd
 
 		final ClientRequest clientRequest=new ClientRequest();
 		clientRequest.setIsMobile(Boolean.TRUE);
-		clientRequest.setIsFirstTime(Boolean.TRUE);
-		clientRequest.setScripts(Arrays.asList("NSE-ADANIENT-27/09/2018","NSE-AJANTPHARM-27/09/2018"));
-		clientRequest.setWantToStart(Boolean.FALSE);
-		clientRequest.setWantToStop(Boolean.FALSE);
-		/*try {
-			Thread.sleep(1000);
+		clientRequest.setScripts(Arrays.asList("MCX-COPPER-28/02/2019"));
+		clientRequest.setWantToRemoveScripts(Boolean.TRUE);
+		
+		try {
+			Thread.sleep(10000);
 		} catch (final InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}*/
-		//mStompClient.send("/app/topic/watch/5b8a2e7df3391b75cb9441dd",ApplicationUtils.generateJSONFromObject(clientRequest)).subscribe();
+		}
+		mStompClient.send("/app/topic/watch/5bbaee3cbdd9161790b96776",ApplicationUtils.generateJSONFromObject(clientRequest)).subscribe();
 		/*try {
 			Thread.sleep(2000);
 		} catch (final InterruptedException e) {
@@ -50,7 +59,9 @@ public class StompTest {
 		clientRequest2.setWantToStop(false);
 		clientRequest2.setWantToStart(true);
 		mStompClient.send("/app/topic/watch/5b8a2e7df3391b75cb9441dd",ApplicationUtils.generateJSONFromObject(clientRequest2)).subscribe();
-		 */mStompClient.lifecycle().subscribe(lifecycleEvent -> {
+		 */
+		
+		mStompClient.lifecycle().subscribe(lifecycleEvent -> {
 			 switch (lifecycleEvent.getType()) {
 
 			 case OPENED:
